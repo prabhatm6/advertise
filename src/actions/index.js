@@ -3,7 +3,8 @@ import axios from "axios";
 import jsCookie from "js-cookie";
 import { NotificationManager } from "react-notifications";
 
-const URL = "http://localhost:5000/ad";
+// const URL = "http://localhost:5000/ad";
+const URL = "https://advertise-backend.herokuapp.com/ad";
 
 export const signup = (data) => {
   return async (dispatch) => {
