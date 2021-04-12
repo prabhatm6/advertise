@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore, compose } from "redux";
+import reducers from "./reducers";
+import thunk from "redux-thunk";
+import "./main.css";
+import "react-notifications/lib/notifications.css";
+import 'cleave.js/dist/addons/cleave-phone.in.js'
+import { NotificationContainer } from "react-notifications";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+const store = createStore(
+  reducers,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// const store = createStore(reducers,applyMiddleware(thunk));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+    <NotificationContainer />
+  </Provider>,
+  document.getElementById("root")
+);

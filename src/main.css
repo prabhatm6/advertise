@@ -1,0 +1,444 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+  padding: 5px 0;
+  /* background-color: red    ; */
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  /* background-color: #f0f0f0e3; */
+}
+
+.navbar {
+  padding: 0 95px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.navbar img {
+  width: 80px;
+}
+
+.navbar__list {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__list-after {
+  width: 40% !important;
+}
+
+.hvr-underline-from-center::before {
+  background-color: #1cc06d;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 90.5%;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.hero__title {
+  font-family: "Merriweather", serif;
+  font-size: 72px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.hero__sub {
+  font-size: 32px;
+  margin-top: 5px;
+  color: rgb(207, 207, 207);
+  text-transform: capitalize;
+  transition: all 0.1s ease-in-out;
+}
+
+.hero__sub:hover {
+  transform: skewX(-20deg);
+}
+
+.hero__button {
+  background-color: #000;
+
+  color: #000;
+  font-family: inherit;
+  border: 1px solid grey;
+  outline: none;
+  font-size: 17px;
+  padding: 12px 35px;
+  margin-top: 30px;
+  cursor: pointer;
+  background-color: transparent;
+  font-weight: bold;
+  border-radius: 100px;
+  border: none;
+}
+
+.right img {
+  width: 500px;
+  height: 500px;
+}
+
+.wave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 48%;
+  z-index: -10;
+}
+
+.wave img {
+  width: 100%;
+}
+
+.hvr-radial-in::before {
+  background-color: #24e082e7;
+  /* background-color:  !important; */
+  border: 1px transparent;
+}
+
+.hvr-radial-in {
+  background-color: #1cc06d;
+  /* border: none; */
+}
+
+/* login */
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper {
+  /* background-color: red; */
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1),
+    inset 0 1px #fff;
+  padding: 0 40px;
+  width: 30%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.header {
+  /* background-color:yello; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header img {
+  width: 70px;
+  height: 70px;
+}
+
+.header__title {
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.header__subtitle {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.form {
+  /* background-color: red; */
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.input__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.form__wave{
+
+  height: 500px;
+  width: 500px;
+
+  position: absolute;
+  top: -35%;
+  left: -65%;
+}
+
+.input__wrapper label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.input__wrapper input {
+  outline: none;
+  font-size: 15px;
+  font-family: inherit;
+  font-weight: 500;
+  padding: 10px 8px;
+  font-family: inherit;
+  border-radius: 4px;
+  border: 1px solid #000;
+}
+
+.forgot {
+  margin-top: 5px;
+}
+
+.form__button {
+  padding: 10px 0;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #1cc06d;
+}
+
+.form__button:hover {
+  opacity: 0.8;
+}
+
+.form__option {
+  text-align: center;
+}
+
+.form__option p {
+  /* margin-top: 10px; */
+}
+
+.form__wave{
+  position: absolute;
+  z-index: -10;
+}
+
+/* signup */
+
+.signup_container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup__header img {
+  width: 70px;
+}
+
+.signup__title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.signup_wrapper {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1),
+  inset 0 1px #fff;
+  padding: 5px 30px;
+  height: 90%;
+  width: 100%;
+  width: 32%;
+  /* background-color: red; */
+
+  display: flex;
+  flex-direction: column;
+}
+
+.input__signup-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.input__group {
+  display: flex;
+  justify-content: space-between;
+}
+.input__signup-wrapper input {
+  padding: 10px 6px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  /* border: none; */
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.input__signup-wrapper label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form__signup {
+  /* width: 100%; */
+  margin-top: 25px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ad-wrapper {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  height: 100;
+  width: 100%;
+}
+
+.form__ad {
+  /* background-color: red; */
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1),
+  inset 0 1px #fff;
+  width: 25%;
+  height: 75%;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  /* margin:auto; */
+  position: relative;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form__ad-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__ad-wrapper input,
+select {
+  padding: 10px 6px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 500;
+  /* border: none; */
+  font-family: inherit;
+  border: 1px solid #000;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.form__ad-wrapper label {
+  margin-bottom: 4px;
+}
+
+.ad__btn {
+  padding: 10px 0;
+  border: none;
+  color: #fff;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #1cc06d;
+  margin-top: 20px;
+}
+
+.ads__wrapper {
+  /* text-align: center; */
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+  grid-row-gap: 10px;
+  grid-column-gap: 100px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .payment__container{
+  width: 100%;
+  height: 100vh;
+}
+
+.payment__wrapper{
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32%;
+  height: auto;
+}
+
+
+
+.payment__input{
+  /* display: flex; */
+
+.payment__wrapper button {
+  width: 100%;
+  text-align: center;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: #7795f8;
+  color: #fff;
+  outline: none;
+  border: 2px solid #fff;
+  padding: 12px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.payment__wrapper button:hover {
+  opacity: 0.7;
+}
+
+.checkout__btn {
+  margin-left: 10px;
+  background-color: rgb(62, 110, 255);
+  padding: 6px 10px;
+  color: #fff;
+  font-size: 13px;
+}
