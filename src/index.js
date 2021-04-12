@@ -8,16 +8,17 @@ import reducers from "./reducers";
 import thunk from "redux-thunk";
 import "./main.css";
 import "react-notifications/lib/notifications.css";
-import 'cleave.js/dist/addons/cleave-phone.in.js'
+import "cleave.js/dist/addons/cleave-phone.in.js";
 import { NotificationContainer } from "react-notifications";
 
-const store = createStore(
-  reducers,
-  compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+const store = createStore(reducers, applyMiddleware(thunk));
+// const store = createStore(
+//   reducers,
+//   compose(
+//     applyMiddleware(thunk),
+//     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+//   )
+// );
 
 // const store = createStore(reducers,applyMiddleware(thunk));
 ReactDOM.render(
