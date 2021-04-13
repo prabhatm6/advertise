@@ -1,27 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getUser, logout } from "../actions";
 import cookie from "js-cookie";
 import Logo from "../img/logo.png";
+import "../App.css";
+import styled from "styled-components";
+import MoboMenu from "./MoboMenu";
+
+
+
+const NavbarList = styled.ul`
+  width: ${(props) => (props.user ? "40%" : "30%")};
+  @media only screen and (max-width: 800px) {
+    display: none;
+  }
+`;
 
 const Menu = ({ getUser, user, logout }) => {
   const jwt = cookie.get("jwt");
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  const [show, setShow] = useState(false);
+
   return (
     <div>
       <>
-        <nav className="navbar">
+        <div show={show} className="navbar">
           <div className="logo">
             <img src={Logo} />
           </div>
-          <ul
-            className={
-              user ? "navbar__list-after navbar__list" : "navbar__list"
-            }
-          >
+          <NavbarList show={show} user={user} className="navbar__list">
             {!user && (
               <>
                 <li>
@@ -54,14 +61,24 @@ const Menu = ({ getUser, user, logout }) => {
               </li>
             )}
             {user && user.isAdmin && (
-              <li>
-                <Link
-                  className="hvr-buzz-out hvr-underline-from-center"
-                  to="/signup/as/admin"
-                >
-                  new admin
-                </Link>
-              </li>
+              <>
+                <li>
+                  <Link
+                    className="hvr-buzz-out hvr-underline-from-center"
+                    to="/signup/as/admin"
+                  >
+                    new admin
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="hvr-buzz-out hvr-underline-from-center"
+                    to="/ad/users"
+                  >
+                    users
+                  </Link>
+                </li>
+              </>
             )}
             {jwt && (
               <li>
@@ -110,9 +127,16 @@ const Menu = ({ getUser, user, logout }) => {
                 </Link>
               </li>
             )}
-          </ul>
-        </nav>
+            <div className="cross" onClick={() => setShow(!show)}>
+              <box-icon name="x" size="md"></box-icon>
+            </div>
+          </NavbarList>
+          <div onClick={() => setShow(!show)} className="hamburger">
+            <box-icon name="menu-alt-right" size="md"></box-icon>
+          </div>
+        </div>
       </>
+      <MoboMenu show={show} setShow={setShow} />
     </div>
   );
 };

@@ -4,24 +4,31 @@ import Menu from "./Menu";
 import { getUser } from "../actions";
 import { Link } from "react-router-dom";
 
-const Myads = ({ ads, getUser }) => {
+const Myads = ({ user, getUser }) => {
   useEffect(() => {
     getUser();
   }, []);
 
-  const handleToken = (data) => {
-    console.log(data);
-  };
   return (
     <div>
       <Menu />
       <h1 style={{ textAlign: "center" }}>Your Ads</h1>
       <div className="ads__wrapper">
-        {ads &&
-          ads.ads.map((ad) => {
+        {user &&
+          user.ads.map((ad) => {
             return (
-              <div className="ad__video-container">
-                <video height="400px" width="400px" controls>
+              <div className="ad__video-container" key={ad._id}>
+                {user.isAdmin && (
+                  <button className="trash">
+                    <box-icon name="trash"></box-icon>
+                  </button>
+                )}
+                <video
+                  height="400px"
+                  style={{ outline: "none" }}
+                  width="400px"
+                  controls
+                >
                   <source src={ad.videourl} type="video/mp4" />
                 </video>
                 <div>
@@ -46,7 +53,7 @@ const Myads = ({ ads, getUser }) => {
                         className="checkout__btn"
                         to={`/ad/checkout/${ad._id}`}
                       >
-                        checkout  
+                        checkout
                       </Link>
                     </p>
                   )}
@@ -61,7 +68,7 @@ const Myads = ({ ads, getUser }) => {
 
 const mapStateToProps = ({ adReducers }) => {
   return {
-    ads: adReducers.user,
+    user: adReducers.user,
   };
 };
 

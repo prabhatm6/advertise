@@ -37,19 +37,14 @@ body {
   height: 70px;
 }
 
-.navbar img {
-  width: 80px;
-}
-
 .navbar__list {
-  width: 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.navbar__list-after {
-  width: 40% !important;
+.navbar img {
+  width: 80px;
 }
 
 .hvr-underline-from-center::before {
@@ -188,8 +183,7 @@ body {
   display: flex;
   flex-direction: column;
 }
-.form__wave{
-
+.form__wave {
   height: 500px;
   width: 500px;
 
@@ -201,6 +195,7 @@ body {
 .input__wrapper label {
   margin-bottom: 6px;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 .input__wrapper input {
@@ -243,7 +238,7 @@ body {
   /* margin-top: 10px; */
 }
 
-.form__wave{
+.form__wave {
   position: absolute;
   z-index: -10;
 }
@@ -277,7 +272,7 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1),
-  inset 0 1px #fff;
+    inset 0 1px #fff;
   padding: 5px 30px;
   height: 90%;
   width: 100%;
@@ -313,7 +308,6 @@ body {
 }
 
 .form__signup {
-  /* width: 100%; */
   margin-top: 25px;
   height: 80%;
   display: flex;
@@ -322,17 +316,13 @@ body {
 }
 
 .ad-wrapper {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   height: 100;
   width: 100%;
 }
 
 .form__ad {
-  /* background-color: red; */
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1),
-  inset 0 1px #fff;
+    inset 0 1px #fff;
   width: 25%;
   height: 75%;
   padding: 20px 30px;
@@ -340,7 +330,6 @@ body {
   flex-direction: column;
   justify-content: space-around;
 
-  /* margin:auto; */
   position: relative;
   top: 42%;
   left: 50%;
@@ -358,7 +347,6 @@ select {
   outline: none;
   font-size: 16px;
   font-weight: 500;
-  /* border: none; */
   font-family: inherit;
   border: 1px solid #000;
   border-radius: 5px;
@@ -385,35 +373,30 @@ select {
 
 .ads__wrapper {
   /* text-align: center; */
+  /* background-color: red; */
   width: 90%;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 370px));
   grid-row-gap: 10px;
   grid-column-gap: 100px;
   justify-items: center;
-  align-items: center;
   justify-content: center;
 }
 
-/* .payment__container{
-  width: 100%;
-  height: 100vh;
-}
-
-.payment__wrapper{
-  background-color: red;
+.ad__video-container {
+  position: relative;
+  /* background-color: red; */
+  padding: 0 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 32%;
-  height: auto;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-
-
-.payment__input{
-  /* display: flex; */
+.ad__video-container video {
+  height: 300px;
+  margin-bottom: 15px;
+}
 
 .payment__wrapper button {
   width: 100%;

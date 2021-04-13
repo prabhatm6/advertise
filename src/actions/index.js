@@ -80,6 +80,7 @@ export const getUser = () => {
     }
   };
 };
+
 export const getAd = (adid) => {
   return async (dispatch) => {
     try {
@@ -98,6 +99,7 @@ export const getAllUser = () => {
     try {
       const userid = localStorage.getItem("userid");
       const res = await axios.get(`${URL}`);
+      console.log(res.data);
       if (res.data.status === "success") {
         dispatch({ type: "ALL_USER", payload: res.data.data });
       }
@@ -119,11 +121,34 @@ export const logout = () => {
     }
   };
 };
+export const forgotPassword = (data) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.post(`${URL}/forgotpassword/user`, data);
+      console.log(res.data);
+      NotificationManager.success("Your password is updated!");
+    } catch (error) {
+      NotificationManager.error(error.response.data.message);
+      console.log(error.response);
+    }
+  };
+};
+export const deleteAd = (adid) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.patch(`${URL}/ad/delete/${adid}`);
+      console.log(res.data);
+      NotificationManager.success("video is deleted");
+    } catch (error) {
+      NotificationManager.error(error.response.data.message);
+      // console.log(error.response);
+    }
+  };
+};
 
 export const createAd = (data, callback) => {
   return async (dispatch) => {
     try {
-      // const userid = localStorage.getItem("userid");
       NotificationManager.warning("Please!wait");
       dispatch({ type: "SET_LOADING", payload: true });
       const token = jsCookie.get("jwt");

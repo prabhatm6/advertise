@@ -1,0 +1,139 @@
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
+.react-datepicker-wrapper input {
+  width: 100% !important;
+}
+
+.trash {
+  background-color: #fff;
+  border-radius: 100px;
+  height: 35px;
+  width: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  position: absolute;
+  top: 28px;
+  right: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 6px 9px rgba(50, 50, 93, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.hamburger {
+  display: none;
+}
+
+.cross {
+  display: none;
+}
+
+/* media query */
+
+@media only screen and (max-width: 800px) {
+  .navbar {
+    display: flex;
+    padding: 0 30px !important;
+    justify-content: space-between !important;
+  }
+
+  .navbar__list {
+    background-color: #fff;
+    width: 100% !important;
+    height: 100vh !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: space-around !important;
+    height: 60%;
+    z-index: 1000 !important;
+  }
+  .navbar__list-after {
+    width: 100% !important;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  .cross {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+
+  .hero {
+    /* margin-top: 30px; */
+    height: 100%;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 40px 30px !important;
+  }
+
+  .hero__title {
+    font-size: 38px !important;
+  }
+
+  .hero__sub {
+    font-size: 20px !important;
+  }
+
+  .hero__button {
+    font-size: 15px !important;
+    padding: 10px 30px !important;
+  }
+
+  .right img {
+    width: 400px !important;
+    height: 400px !important;
+  }
+  .wave {
+    display: none !important;
+  }
+
+  /* login */
+
+  .wrapper {
+    width: 90% !important;
+    /* box-shadow: none !important; */
+  }
+
+  .form__wave {
+    height: 450px !important;
+    width: 450px !important;
+  }
+
+  .input__wrapper {
+    font-size: 14px !important;
+  }
+
+  /* signup */
+  .signup_wrapper {
+    width: 90% !important;
+  }
+
+  .input__group {
+    flex-direction: column !important;
+    /* justify-content: space-evenly !important; */
+  }
+
+  .form__ad {
+    width: 90% !important;
+  }
+  .ad__video-container video {
+      width: 350px !important;
+  }
+
+  .trash{
+      top: 35px !important;
+  }
+}

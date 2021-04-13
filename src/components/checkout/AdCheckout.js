@@ -66,8 +66,7 @@ const cardElementOpts = {
   hidePostalCode: true,
 };
 
-const AdCheckout = ({ checkout, adid, history, ad,loading }) => {
-
+const AdCheckout = ({ checkout, adid, history, ad, loading }) => {
   const stripe = useStripe();
   const elements = useElements();
   const handleSubmit = async (e) => {
@@ -79,7 +78,7 @@ const AdCheckout = ({ checkout, adid, history, ad,loading }) => {
 
     if (!error) {
       const { id } = paymentMethod;
-      checkout({ amount: 10000, paymentId: id }, adid, () =>
+      checkout({ amount: Number(ad.price), paymentId: id }, adid, () =>
         history.push("/your-ads")
       );
     } else {
@@ -88,10 +87,10 @@ const AdCheckout = ({ checkout, adid, history, ad,loading }) => {
   };
   return (
     <div className="payment__container">
-      {ad && !ad.payment && (
+      {ad && !ad.payment ? (
         <>
           <h3 style={{ textAlign: "center" }}>
-            Make a payment for {ad.adname}
+            Make a payment for {ad.adname} Rs {ad.price}
           </h3>
           <div className="payment__wrapper">
             <form onSubmit={handleSubmit}>
@@ -101,11 +100,7 @@ const AdCheckout = ({ checkout, adid, history, ad,loading }) => {
                 </CardElementContainer>
                 {loading ? (
                   <button className="ad__btn">
-                    <ClipLoader
-                      loading={true}
-                      color={"white"}
-                      size={15}
-                    />
+                    <ClipLoader loading={true} color={"white"} size={15} />
                   </button>
                 ) : (
                   <button className="ad__btn">pay</button>
@@ -114,6 +109,8 @@ const AdCheckout = ({ checkout, adid, history, ad,loading }) => {
             </form>
           </div>
         </>
+      ) : (
+        <p>payment is done for this ad!</p>
       )}
     </div>
   );

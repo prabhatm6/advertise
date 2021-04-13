@@ -15,8 +15,6 @@ const override = css`
 `;
 
 const Signin = (props) => {
-  console.log(props.loading);
-  // const [loading, setLoading] = React.useState(false);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -33,7 +31,7 @@ const Signin = (props) => {
       <div className="wrapper">
         <div className="header">
           <Link to="/">
-            <img src={Logo} />
+            <img src={Logo} alt="logo" />
           </Link>
           <p className="header__title">Login</p>
           <p className="header__subtitle">Welcome back</p>
@@ -42,7 +40,6 @@ const Signin = (props) => {
           <div className="input__wrapper">
             <label>Email</label>
             <input
-              // placeholder="Enter your Email"
               type="email"
               name="email"
               onChange={formik.handleChange}
@@ -57,7 +54,9 @@ const Signin = (props) => {
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-            <p className="forgot">forgot your password?</p>
+            <Link to="/forgotpassword" className="forgot">
+              forgot your password?
+            </Link>
           </div>
           {props.loading ? (
             <button className="form__button">
@@ -77,7 +76,7 @@ const Signin = (props) => {
             </p>
           </div>
           <div className="form__wave">
-            <img src={Wave} />
+            <img src={Wave} alt="wave" />
           </div>
         </form>
       </div>

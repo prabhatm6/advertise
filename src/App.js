@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
 import authForm from "./components/signup";
@@ -6,13 +5,13 @@ import Signin from "./components/signin";
 import NewAd from "./components/NewAd";
 import Home from "./components/Home";
 import AdminSignin from "./components/AdminSignin";
-import { signupAsAdmin } from "./actions";
 import AdminSignup from "./components/AdminSignup";
-import Menu from "./components/Menu";
 import Myads from "./components/Myads";
 import Budget from "./components/Budget";
-import AdCheckout from "./components/checkout/AdCheckout";
 import StripeContainer from "./components/checkout/StripeContainer";
+import User from "./components/User";
+import Forgotpass from "./components/Forgotpass";
+import "boxicons";
 
 function App() {
   return (
@@ -26,7 +25,13 @@ function App() {
         <Route path="/signup/as/admin" exact={true} component={AdminSignup} />
         <Route path="/signup" exact={true} component={authForm} />
         <Route path="/newad" exact={true} component={NewAd} />
-        <Route path="/ad/checkout/:adid" exact={true} component={StripeContainer} />
+        <Route path="/ad/users" exact={true} component={User} />
+        <Route path="/forgotpassword" exact={true} component={Forgotpass} />
+        <Route
+          path="/ad/checkout/:adid"
+          exact={true}
+          component={StripeContainer}
+        />
       </BrowserRouter>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { } from "react";
 import { useFormik } from "formik";
 import { connect } from "react-redux";
 import { signup } from "../actions";
@@ -15,15 +15,7 @@ const override = css`
   border-color: #fff;
 `;
 
-const AuthForm = ({ signup,loading }) => {
-  useEffect(() => {
-    var cleave = new Cleave(inputEl, {
-      phone: true,
-      phoneRegionCode: "{country}",
-    });
-  }, []);
-  const inputEl = useRef();
-
+const AuthForm = ({ signup, loading }) => {
   const formik = useFormik({
     initialValues: {
       firstname: "",
@@ -44,7 +36,7 @@ const AuthForm = ({ signup,loading }) => {
       <div className="signup_wrapper">
         <div className="signup__header">
           <Link to="/">
-            <img src={Logo} />
+            <img src={Logo} alt="logo" />
           </Link>
           <p className="header__title">Sign Up</p>
         </div>
@@ -80,7 +72,11 @@ const AuthForm = ({ signup,loading }) => {
           </div>
           <div className="input__signup-wrapper">
             <label>Phone No</label>
-            <Cleave options={{ phone: true, phoneRegionCode: "IN" }} />
+            <Cleave
+              options={{ phone: true, phoneRegionCode: "IN" }}
+              name="phoneno"
+              onChange={formik.handleChange}
+            />
           </div>
           <div className="input__signup-wrapper">
             <label>Email</label>
@@ -128,7 +124,7 @@ const AuthForm = ({ signup,loading }) => {
             </p>
           </div>
           <div className="form__wave">
-            <img src={Wave} />
+            <img src={Wave} alt="wave" />
           </div>
         </form>
       </div>
