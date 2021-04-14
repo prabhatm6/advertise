@@ -14,8 +14,7 @@ const override = css`
   border-color: #fff;
 `;
 
-
-const AuthForm = ({ signupAsAdmin,loading }) => {
+const AuthForm = ({ signupAsAdmin, loading }) => {
   useEffect(() => {
     var cleave = new Cleave(inputEl, {
       phone: true,
@@ -34,7 +33,9 @@ const AuthForm = ({ signupAsAdmin,loading }) => {
       password: "",
     },
     onSubmit: (values) => {
-      signupAsAdmin(values);
+      signupAsAdmin(values, () => {
+        formik.resetForm();
+      });
     },
   });
 
@@ -79,7 +80,12 @@ const AuthForm = ({ signupAsAdmin,loading }) => {
           </div>
           <div className="input__signup-wrapper">
             <label>Phone No</label>
-            <Cleave options={{ phone: true, phoneRegionCode: "IN" }} />
+            <Cleave
+              options={{ phone: true, phoneRegionCode: "IN" }}
+              name="phoneno"
+              onChange={formik.handleChange}
+              value={formik.values.phoneno}
+            />
           </div>
           <div className="input__signup-wrapper">
             <label>Email</label>
@@ -110,7 +116,12 @@ const AuthForm = ({ signupAsAdmin,loading }) => {
           </div>
           {loading ? (
             <button className="form__button">
-              <BeatLoader css={override} loading={loading} color={"white"}  size={15} />
+              <BeatLoader
+                css={override}
+                loading={loading}
+                color={"white"}
+                size={15}
+              />
             </button>
           ) : (
             <button className="form__button">submit</button>

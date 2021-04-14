@@ -27,18 +27,15 @@ export const signup = (data) => {
     }
   };
 };
-export const signupAsAdmin = (data) => {
+export const signupAsAdmin = (data,callback) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(`${URL}/signup/as/admin`, data);
       dispatch({ type: "SET_LOADING", payload: true });
       if (res.data.status === "success") {
-        jsCookie.set("jwt", res.data.token);
         NotificationManager.success("New admin is created!");
-        localStorage.setItem("userid", res.data.admin.id);
-        setTimeout(() => {
-          window.location.assign("/newad");
-        }, 1000);
+        callback();
+        dispatch({ type: "SET_LOADING", payload: false });
       }
     } catch (error) {
       const err = error.response.data.message;

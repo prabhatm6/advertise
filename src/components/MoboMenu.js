@@ -108,14 +108,14 @@ const MoboMenu = ({ getUser, user, show, setShow, logout }) => {
               Budget
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               className="hvr-buzz-out hvr-underline-from-center"
               to="/aboutus"
             >
               About
             </Link>
-          </li>
+          </li> */}
           {user && (
             <li>
               <Link
