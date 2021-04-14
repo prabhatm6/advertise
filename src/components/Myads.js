@@ -1,13 +1,21 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Menu from "./Menu";
-import { getUser } from "../actions";
+import { getUser, deleteAd } from "../actions";
 import { Link } from "react-router-dom";
 
-const Myads = ({ user, getUser }) => {
+const Myads = ({ user, getUser, deleteAd }) => {
   useEffect(() => {
-    getUser();
+    getUser();  
   }, []);
+
+  const filterAd = (ads) => {
+    return ads.filter((ad) => {
+      return ad.active === true;
+    });
+  };
+
+  // console.log(user&&filterAd());
 
   return (
     <div>
@@ -15,11 +23,11 @@ const Myads = ({ user, getUser }) => {
       <h1 style={{ textAlign: "center" }}>Your Ads</h1>
       <div className="ads__wrapper">
         {user &&
-          user.ads.map((ad) => {
+          filterAd(user.ads).map((ad) => {
             return (
               <div className="ad__video-container" key={ad._id}>
                 {user.isAdmin && (
-                  <button className="trash">
+                  <button onClick={() => deleteAd(ad._id)} className="trash">
                     <box-icon name="trash"></box-icon>
                   </button>
                 )}
@@ -72,4 +80,4 @@ const mapStateToProps = ({ adReducers }) => {
   };
 };
 
-export default connect(mapStateToProps, { getUser })(Myads);
+export default connect(mapStateToProps, { getUser, deleteAd })(Myads);

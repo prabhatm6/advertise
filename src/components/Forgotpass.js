@@ -3,26 +3,27 @@ import React from "react";
 import { connect } from "react-redux";
 import { forgotPassword } from "../actions";
 
-const Forgotpass = ({ forgotPassword }) => {
+const Forgotpass = ({ forgotPassword,history }) => {
   const formik = useFormik({
     initialValues: {
       email: "",
       newpassword: "",
     },
     onSubmit: (values) => {
-      forgotPassword(values);
+      forgotPassword(values,() => history.push('/signin'));
     },
   });
 
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
+    <div className="forgot__container">
+      <form className="forgot__form" onSubmit={formik.handleSubmit}>
         <div>
           <input
             type="text"
             name="email"
             value={formik.values.email}
             onChange={formik.handleChange}
+            placeholder="Enter your Email"
           />
         </div>
         <div>
@@ -30,10 +31,11 @@ const Forgotpass = ({ forgotPassword }) => {
             type="password"
             name="newpassword"
             value={formik.values.newpassword}
+            placeholder="Enter New password"
             onChange={formik.handleChange}
           />
         </div>
-        <button>submit</button>
+        <button>update</button>
       </form>
     </div>
   );

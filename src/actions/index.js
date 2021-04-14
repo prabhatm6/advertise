@@ -3,8 +3,8 @@ import axios from "axios";
 import jsCookie from "js-cookie";
 import { NotificationManager } from "react-notifications";
 
-// const URL = "http://localhost:5000/ad";
-const URL = "https://advertise-backend.herokuapp.com/ad";
+const URL = "http://localhost:5000/ad";
+// const URL = "https://advertise-backend.herokuapp.com/ad";
 
 export const signup = (data) => {
   return async (dispatch) => {
@@ -121,12 +121,14 @@ export const logout = () => {
     }
   };
 };
-export const forgotPassword = (data) => {
+export const forgotPassword = (data, callback) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(`${URL}/forgotpassword/user`, data);
-      console.log(res.data);
-      NotificationManager.success("Your password is updated!");
+      if (res.data.status === "success") {
+        NotificationManager.success("Your password is updated!");
+        callback();
+      }
     } catch (error) {
       NotificationManager.error(error.response.data.message);
       console.log(error.response);
@@ -137,8 +139,14 @@ export const deleteAd = (adid) => {
   return async (dispatch) => {
     try {
       const res = await axios.patch(`${URL}/ad/delete/${adid}`);
-      console.log(res.data);
-      NotificationManager.success("video is deleted");
+      if (res.data.status === "success") {
+        const userid = localStorage.getItem("userid");
+        const res = await axios.get(`${URL}/user/${userid}`);
+        if (res.data.status === "success") {
+          dispatch({ type: "USER", payload: res.data.user });
+        }
+        NotificationManager.success("video is deleted");
+      }
     } catch (error) {
       NotificationManager.error(error.response.data.message);
       // console.log(error.response);

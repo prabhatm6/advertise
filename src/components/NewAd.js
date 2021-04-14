@@ -48,6 +48,7 @@ const override = css`
 `;
 
 const NewAd = ({ createAd, getUser, loading, history }) => {
+  const [date, setDate] = useState(null);
   useEffect(() => {
     getUser();
   }, []);
@@ -62,10 +63,11 @@ const NewAd = ({ createAd, getUser, loading, history }) => {
       category: "commercial",
     },
     onSubmit: (values) => {
-      const price = plan[values.channel][values.timings];
+      const price = plan[`${values.channel}`][values.timings]
+      console.log(price);
       const form = new FormData();
       form.append("adname", values.adname);
-      form.append("releasedate", values.releasedate);
+      form.append("releasedate", date);
       form.append("channel", values.channel);
       form.append("timings", values.timings);
       form.append("category", values.category);
@@ -91,9 +93,10 @@ const NewAd = ({ createAd, getUser, loading, history }) => {
           <label>release Date</label>
           <DatePicker
             autoComplete="off"
-            onChange={formik.handleChange}
+            selected={date}
+            onChange={(date) => setDate(date)}
             name="releasedate"
-            value={formik.values.releasedate}
+            value={date}
             minDate={new Date()}
           />
         </div>
@@ -120,7 +123,7 @@ const NewAd = ({ createAd, getUser, loading, history }) => {
           >
             <option>bbc</option>
             <option selected>Star</option>
-            <option>Disacovery</option>
+            <option>Discovery</option>
             <option>Rbharat</option>
             <option>cnn</option>
           </select>
