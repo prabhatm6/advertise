@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormik } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions";
@@ -6,6 +6,11 @@ import Logo from "../img/logo.png";
 import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import { css } from "styled-components";
+import Back1 from "../img/ad-1.jpg";
+import Back2 from "../img/ad-3.jpg";
+import Back3 from "../img/ad-bill.jpg";
+
+const backgrounds = [Back1, Back2, Back3];
 
 const override = css`
   display: block;
@@ -14,6 +19,10 @@ const override = css`
 `;
 
 const Signin = (props) => {
+  const [randomNum, setRandom] = useState(null);
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * 3));
+  }, []);
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -27,6 +36,9 @@ const Signin = (props) => {
 
   return (
     <div className="container">
+      <div className="container__background">
+        <img src={backgrounds[randomNum]} />
+      </div>
       <div className="wrapper">
         <div className="header">
           <Link to="/">
@@ -54,11 +66,18 @@ const Signin = (props) => {
               onChange={formik.handleChange}
               value={formik.values.password}
             />
-            <p className="forgot">forgot your password?</p>
+            <Link to="/forgotpassword" className="forgot">
+              forgot your password?
+            </Link>
           </div>
           {props.loading ? (
             <button className="form__button">
-              <BeatLoader css={override} loading={props.loading} color={"white"}  size={15} />
+              <BeatLoader
+                css={override}
+                loading={props.loading}
+                color={"white"}
+                size={15}
+              />
             </button>
           ) : (
             <button className="form__button">submit</button>

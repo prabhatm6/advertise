@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useFormik } from "formik";
 import { connect } from "react-redux";
 import { signupAsAdmin } from "../actions";
@@ -7,6 +7,11 @@ import { Link } from "react-router-dom";
 import Cleave from "cleave.js/react";
 import { BeatLoader } from "react-spinners";
 import { css } from "styled-components";
+import Back1 from "../img/ad-1.jpg";
+import Back2 from "../img/ad-3.jpg";
+import Back3 from "../img/ad-bill.jpg";
+
+const backgrounds = [Back1, Back2, Back3];
 
 const override = css`
   display: block;
@@ -20,6 +25,11 @@ const AuthForm = ({ signupAsAdmin, loading }) => {
       phone: true,
       phoneRegionCode: "{country}",
     });
+  }, []);
+
+  const [randomNum, setRandom] = useState(null);
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * 3));
   }, []);
   const inputEl = useRef();
   const formik = useFormik({
@@ -41,6 +51,9 @@ const AuthForm = ({ signupAsAdmin, loading }) => {
 
   return (
     <div className="signup_container">
+      <div className="container__background">
+        <img src={backgrounds[randomNum]} />
+      </div>
       <div className="signup_wrapper">
         <div className="signup__header">
           <Link to="/">

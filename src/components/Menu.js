@@ -25,9 +25,9 @@ const Menu = ({ getUser, user, logout }) => {
     <div>
       <>
         <div show={show} className="navbar">
-          <div className="logo">
+          <Link to="/" className="logo">
             <img src={Logo} />
-          </div>
+          </Link>
           <NavbarList show={show} user={user} className="navbar__list">
             {!user && (
               <>

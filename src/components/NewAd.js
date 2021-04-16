@@ -7,6 +7,11 @@ import { ClipLoader } from "react-spinners";
 import { css } from "styled-components";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Back1 from "../img/ad-1.jpg";
+import Back2 from "../img/ad-3.jpg";
+import Back3 from "../img/ad-bill.jpg";
+
+const backgrounds = [Back1, Back2, Back3];
 
 const plan = {
   bbc: {
@@ -49,9 +54,12 @@ const override = css`
 
 const NewAd = ({ createAd, getUser, loading, history }) => {
   const [date, setDate] = useState(null);
+  const [randomNum, setRandom] = useState(null);
   useEffect(() => {
     getUser();
+    setRandom(Math.floor(Math.random() * 3));
   }, []);
+
   const [file, setFile] = useState(null);
   const formik = useFormik({
     initialValues: {
@@ -63,7 +71,7 @@ const NewAd = ({ createAd, getUser, loading, history }) => {
       category: "commercial",
     },
     onSubmit: (values) => {
-      const price = plan[`${values.channel}`][values.timings]
+      const price = plan[`${values.channel}`][values.timings];
       console.log(price);
       const form = new FormData();
       form.append("adname", values.adname);
@@ -78,79 +86,84 @@ const NewAd = ({ createAd, getUser, loading, history }) => {
   });
   return (
     <>
-      <Menu />
-      <form className="form__ad" onSubmit={formik.handleSubmit}>
-        <div className="form__ad-wrapper">
-          <label>Ad name</label>
-          <input
-            type="text"
-            name="adname"
-            onChange={formik.handleChange}
-            value={formik.values.adname}
-          />
+      <div className="form__ad-container">
+        <div className="container__background">
+          <img src={backgrounds[randomNum]} />
         </div>
-        <div className="form__ad-wrapper">
-          <label>release Date</label>
-          <DatePicker
-            autoComplete="off"
-            selected={date}
-            onChange={(date) => setDate(date)}
-            name="releasedate"
-            value={date}
-            minDate={new Date()}
-          />
-        </div>
-        <div className="form__ad-wrapper">
-          <label>category</label>
-          <select
-            defaultValue="commercial"
-            onChange={formik.handleChange}
-            name="category"
-          >
-            <option>commercial</option>
-            <option>matrimonials</option>
-            <option>bevarages</option>
-            <option>Eatables</option>
-            <option>hygiene</option>
-          </select>
-        </div>
-        <div className="form__ad-wrapper">
-          <label>channel</label>
-          <select
-            defaultValue="bbc"
-            onChange={formik.handleChange}
-            name="channel"
-          >
-            <option>bbc</option>
-            <option selected>Star</option>
-            <option>Discovery</option>
-            <option>Rbharat</option>
-            <option>cnn</option>
-          </select>
-        </div>
-        <div className="form__ad-wrapper">
-          <label>timings</label>
-          <select onChange={formik.handleChange} name="timings">
-            <option selected value="6:00am-9:00am">
-              6:00am-9:00am
-            </option>
-            <option>9:00am-12:00am</option>
-            <option>12:00pm-5:00pm</option>
-            <option>5:00pm-9:00pm</option>
-          </select>
-        </div>
-        <div>
-          <label className="form__ad-wrapper">upload content</label>
-          <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-        </div>
-        {loading ? (
-          <button className="ad__btn">
-            <ClipLoader loading={true} color={"white"} size={15} />
-          </button>
-        ) : (
-          <button className="ad__btn">submit</button>
-        )}
-      </form>
+        <Menu />
+        <form className="form__ad" onSubmit={formik.handleSubmit}>
+          <div className="form__ad-wrapper">
+            <label>Ad name</label>
+            <input
+              type="text"
+              name="adname"
+              onChange={formik.handleChange}
+              value={formik.values.adname}
+            />
+          </div>
+          <div className="form__ad-wrapper">
+            <label>release Date</label>
+            <DatePicker
+              autoComplete="off"
+              selected={date}
+              onChange={(date) => setDate(date)}
+              name="releasedate"
+              value={date}
+              minDate={new Date()}
+            />
+          </div>
+          <div className="form__ad-wrapper">
+            <label>category</label>
+            <select
+              defaultValue="commercial"
+              onChange={formik.handleChange}
+              name="category"
+            >
+              <option>commercial</option>
+              <option>matrimonials</option>
+              <option>bevarages</option>
+              <option>Eatables</option>
+              <option>hygiene</option>
+            </select>
+          </div>
+          <div className="form__ad-wrapper">
+            <label>channel</label>
+            <select
+              defaultValue="bbc"
+              onChange={formik.handleChange}
+              name="channel"
+            >
+              <option>bbc</option>
+              <option selected>Star</option>
+              <option>Discovery</option>
+              <option>Rbharat</option>
+              <option>cnn</option>
+            </select>
+          </div>
+          <div className="form__ad-wrapper">
+            <label>timings</label>
+            <select onChange={formik.handleChange} name="timings">
+              <option selected value="6:00am-9:00am">
+                6:00am-9:00am
+              </option>
+              <option>9:00am-12:00am</option>
+              <option>12:00pm-5:00pm</option>
+              <option>5:00pm-9:00pm</option>
+            </select>
+          </div>
+          <div>
+            <label className="form__ad-wrapper">upload content</label>
+            <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+          </div>
+          {loading ? (
+            <button className="ad__btn">
+              <ClipLoader loading={true} color={"white"} size={15} />
+            </button>
+          ) : (
+            <button className="ad__btn">submit</button>
+          )}
+        </form>
+      </div>
     </>
   );
 };

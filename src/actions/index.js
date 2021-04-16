@@ -27,7 +27,7 @@ export const signup = (data) => {
     }
   };
 };
-export const signupAsAdmin = (data,callback) => {
+export const signupAsAdmin = (data, callback) => {
   return async (dispatch) => {
     try {
       const res = await axios.post(`${URL}/signup/as/admin`, data);
@@ -73,7 +73,7 @@ export const getUser = () => {
         dispatch({ type: "USER", payload: res.data.user });
       }
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
     }
   };
 };
@@ -87,7 +87,7 @@ export const getAd = (adid) => {
         dispatch({ type: "GET_AD", payload: res.data.ad });
       }
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
     }
   };
 };
@@ -96,12 +96,12 @@ export const getAllUser = () => {
     try {
       const userid = localStorage.getItem("userid");
       const res = await axios.get(`${URL}`);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.data.status === "success") {
         dispatch({ type: "ALL_USER", payload: res.data.data });
       }
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
     }
   };
 };
@@ -114,7 +114,7 @@ export const logout = () => {
         window.location.assign("/");
       }, 1000);
     } catch (error) {
-      console.log(error.response);
+      // console.log(error.response);
     }
   };
 };
@@ -128,7 +128,7 @@ export const forgotPassword = (data, callback) => {
       }
     } catch (error) {
       NotificationManager.error(error.response.data.message);
-      console.log(error.response);
+      // console.log(error.response);
     }
   };
 };
@@ -163,7 +163,7 @@ export const createAd = (data, callback) => {
         },
       });
       if (res.data.status === "success") {
-        console.log(res.data);
+        // console.log(res.data);
         NotificationManager.success("Ad is created");
         dispatch({ type: "SET_LOADING", payload: false });
         getUser();
@@ -189,7 +189,7 @@ export const checkout = (data, adid, callback) => {
         },
       });
       if (res.data.status === "success") {
-        console.log(res.data);
+        // console.log(res.data);
         NotificationManager.success(res.data.message);
         dispatch({ type: "SET_LOADING", payload: false });
         getUser();
@@ -198,7 +198,7 @@ export const checkout = (data, adid, callback) => {
     } catch (error) {
       dispatch({ type: "SET_LOADING", payload: false });
       const err = error.response.data.message;
-      console.log(error);
+      // console.log(error);
       NotificationManager.error(err, "Error");
     }
   };

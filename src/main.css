@@ -127,6 +127,21 @@ body {
 
 /* login */
 
+.container__background {
+  z-index: -100;
+  width: 100vw  ;
+  height: 100vh !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.container__background img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -147,6 +162,7 @@ body {
   position: relative;
   z-index: 100;
   overflow: hidden;
+  background-color: #fff;
 }
 
 .header {
@@ -246,6 +262,10 @@ body {
 /* signup */
 
 .signup_container {
+  background-image: url("./img/ad-bill.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -277,6 +297,7 @@ body {
   height: 90%;
   width: 100%;
   width: 32%;
+  background-color: #fff;
   /* background-color: red; */
 
   display: flex;
@@ -315,12 +336,22 @@ body {
   justify-content: space-between;
 }
 
+.form__ad-container {
+  width: 100%;
+  height: 100vh;
+  background-image: url("./img/ad-bill.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 .ad-wrapper {
   height: 100;
   width: 100%;
 }
 
 .form__ad {
+  background-color: #fff;
   box-shadow: 0 6px 9px rgba(50, 50, 93, 0.1), 0 2px 5px rgba(0, 0, 0, 0.1),
     inset 0 1px #fff;
   width: 25%;

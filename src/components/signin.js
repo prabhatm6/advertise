@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { connect } from "react-redux";
 import { login } from "../actions";
@@ -8,6 +8,11 @@ import { BeatLoader } from "react-spinners";
 import { css } from "styled-components";
 import Wave from "../img/blob-1.svg";
 
+import Back1 from "../img/ad-1.jpg";
+import Back2 from "../img/ad-3.jpg";
+import Back3 from "../img/ad-bill.jpg";
+
+const backgrounds = [Back1, Back2, Back3];
 const override = css`
   display: block;
   margin: 0 auto;
@@ -15,6 +20,11 @@ const override = css`
 `;
 
 const Signin = (props) => {
+  const [randomNum, setRandom] = useState(null);
+  useEffect(() => {
+    setRandom(Math.floor(Math.random() * 3));
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -28,6 +38,9 @@ const Signin = (props) => {
 
   return (
     <div className="container">
+      <div className="container__background">
+        <img src={backgrounds[randomNum]} />
+      </div>
       <div className="wrapper">
         <div className="header">
           <Link to="/">
